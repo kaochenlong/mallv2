@@ -52,7 +52,21 @@ RSpec.describe Cart, type: :model do
       expect(cart.total_price).to be 700
     end
 
-    # 特別活動可搭配折扣（例如聖誕節的時候全面打 9 折，或是滿額滿千送百或滿額免運費）。
+    it "特別活動可搭配折扣（例如聖誕節的時候全面打 9 折）" do
+      p1 = Product.create(title: "ruby", price: 100)
+      p2 = Product.create(title: "php", price: 200)
+
+      cart = Cart.new
+      3.times { cart.add_item p1.id }
+      2.times { cart.add_item p2.id }
+
+      xmas = Time.local(2017, 12, 25, 12, 0, 0)
+      Timecop.travel(xmas) do
+        expect(cart.total_price).to be (700 * 0.9)
+      end
+    end
+
+    # it "滿千送百"
 
     # 進階功能
     # 可以將購物車內容轉換成 Hash 並存到 Session 裡。
