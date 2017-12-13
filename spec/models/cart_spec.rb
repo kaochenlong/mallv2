@@ -40,7 +40,18 @@ RSpec.describe Cart, type: :model do
 
       expect(cart.items.first.total_price).to be 300
     end
-    # 可以計算整台購物車的總消費金額。
+
+    it "可以計算整台購物車的總消費金額" do
+      p1 = Product.create(title: "ruby", price: 100)
+      p2 = Product.create(title: "php", price: 200)
+
+      cart = Cart.new
+      3.times { cart.add_item p1.id }
+      2.times { cart.add_item p2.id }
+
+      expect(cart.total_price).to be 700
+    end
+
     # 特別活動可搭配折扣（例如聖誕節的時候全面打 9 折，或是滿額滿千送百或滿額免運費）。
 
     # 進階功能
