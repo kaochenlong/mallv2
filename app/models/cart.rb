@@ -13,6 +13,9 @@ class Cart
     { "items" => item_list }
   end
 
+  def self.from_hash(hash)
+  end
+
   def add_item(id)
     found_item = @items.find { |item| item.product_id == id }
 
