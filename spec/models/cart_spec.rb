@@ -31,7 +31,15 @@ RSpec.describe Cart, type: :model do
       expect(cart.items.first.product).to be_a Product
       expect(cart.items.last.product_id).to be p2.id
     end
-    # 每個 Cart Item 都可以計算它自己的金額（小計）。
+
+    it "每個 Cart Item 都可以計算它自己的金額（小計）" do
+      p1 = Product.create(title: "ruby", price: 100)
+
+      cart = Cart.new
+      3.times { cart.add_item p1.id }
+
+      expect(cart.items.first.total_price).to be 300
+    end
     # 可以計算整台購物車的總消費金額。
     # 特別活動可搭配折扣（例如聖誕節的時候全面打 9 折，或是滿額滿千送百或滿額免運費）。
 
