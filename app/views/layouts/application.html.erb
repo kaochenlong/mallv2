@@ -9,6 +9,12 @@
   </head>
 
   <body>
+    購物車：<%= current_cart.items.count %>
+    <% unless current_cart.empty? %>
+      <%= link_to "檢視", cart_path %>
+      <%= link_to "清空", cart_path, method: "delete" %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>

@@ -5,8 +5,6 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-
-    @cart = Cart.from_hash(session[:cart9527])
   end
 
   # GET /products/1
