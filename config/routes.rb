@@ -4,6 +4,13 @@ Rails.application.routes.draw do
   resource :cart, only: [:show, :destroy] do
     collection do
       post :add, path:'add/:id'
+      get :checkout
+    end
+  end
+
+  resources :orders, only: [:create] do
+    member do
+      delete :cancel
     end
   end
 

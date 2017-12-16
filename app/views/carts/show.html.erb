@@ -1,23 +1,6 @@
 <h1>檢視購物車</h1>
 
-<table>
-  <tr>
-    <td>品名</td>
-    <td>數量</td>
-    <td>單價</td>
-    <td>小計</td>
-  </tr>
-  <% current_cart.items.each do |item| %>
-  <tr>
-    <td><%= item.product.title %></td>
-    <td><%= item.quantity %></td>
-    <td><%= item.product.price %></td>
-    <td><%= item.total_price %></td>
-  </tr>
-  <% end %>
-  <tr>
-    <td colspan="4">
-      總計：<%= current_cart.total_price %>
-    </td>
-  </tr>
-</table>
+<%= render "cart" %>
+
+<%= link_to "繼續選購", products_path %>
+<%= link_to "結帳", checkout_cart_path %>
