@@ -1,7 +1,5 @@
 class OrdersController < ApplicationController
   def create
-    # nonce =
-
     # 建立訂單
     order = Order.new(order_params)
 
