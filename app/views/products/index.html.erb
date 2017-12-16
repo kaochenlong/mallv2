@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Products</h1>
+購物車：<%= @cart.items.count %>
 
 <table>
   <thead>
@@ -13,7 +14,10 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= link_to product.title, product %></td>
+        <td>
+          <%= link_to "放入購物車", add_cart_path(product), method: "post" %>
+          <%= link_to product.title, product %>
+        </td>
         <td><%= product.price %></td>
       </tr>
     <% end %>
