@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    OrderMailer.hello("eddie@5xruby.tw").deliver_later
   end
 
   # GET /products/new

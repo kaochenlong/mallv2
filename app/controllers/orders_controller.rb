@@ -18,6 +18,9 @@ class OrdersController < ApplicationController
       )
 
       if result.success?
+        # 通知信
+        OrderMailer.hello(order_params[:email]).deliver_later
+
         # 清空 Cart
         session[:cart9527] = nil
         # 走
